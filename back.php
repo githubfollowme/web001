@@ -17,7 +17,9 @@
 </div>
 <iframe style="display:none;" name="back" id="back"></iframe>
 	<div id="main">
-    	<a title="" href="?"><div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題--></a>
+		
+	<!--回到首頁  -->
+    	<a title="" href="index.php"><div class="ti" style="background:url(&#39;use/&#39;); background-size:cover;"></div><!--標題--></a>
         	<div id="ms">
              	<div id="lf" style="float:left;">
             		<div id="menuput" class="dbor">

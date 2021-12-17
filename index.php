@@ -61,7 +61,27 @@
                             								</span>
                             <ul class="ssaa" style="list-style-type:decimal;">
                             	                            </ul>
-        			<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
+        			<?php 
+					$do=isset($_GET["do"])?$_GET["do"]:'main';
+$file="./front/".$do.".php";
+
+if(file_exists($file)){
+	include $file;
+}else{
+	echo "檔案不存在";
+}
+
+//$do=$_GET["do"]??'main'  跟65行一樣意思;
+					// if(isset($_GET['do'])){
+					// $do=$_GET['do'];
+					// }else{
+						// $do="main";
+					// }
+					// inlude 檔案
+					?>
+
+
+															<div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
                     	<script>
 						$(".ssaa li").hover(
 							function ()
