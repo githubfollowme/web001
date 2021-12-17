@@ -139,7 +139,9 @@ $Image=new DB('image');
 $News=new DB('news');
 $Admin=new DB('admin');
 $Menu=new DB('menu');
-
+// *$total=$Total->find(1);
+// echo $total['total'];
+// print_r($Total->all());
 
 
 ?>
