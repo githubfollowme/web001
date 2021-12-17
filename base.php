@@ -87,7 +87,7 @@ class DB{
     public function save($array){
         if(isset($array['id'])){
             //update
-            foreach($array[0] as $key => $value){
+            foreach($array as $key => $value){
                 $tmp[]="`$key`='$value'";
             }
             $sql="UPDATE $this->table 
@@ -142,6 +142,14 @@ $Menu=new DB('menu');
 // *$total=$Total->find(1);
 // echo $total['total'];
 // print_r($Total->all());
+
+// 現在來看進站人數 只要沒有跨日 照下面邏輯來即可
+if(!isset($_SESSION['total'])){
+    $total=$Total->find(1);
+    $total['total']++;
+    $Total->save($total);
+    $_SESSION['total']=$total['total'];
+}
 
 
 ?>
