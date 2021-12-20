@@ -187,7 +187,7 @@ function dd($array){
     print_r($array);
     echo "</pre>";
 }
-
+// 完成網站標題編輯功能
 function to($url){
     header("location:".$url);
 }
@@ -207,9 +207,11 @@ $Menu=new DB('menu');
 $tt=$_GET['do']??'';
 
 switch($tt){
-    case "title":
-        $DB=$Title;
-    break;
+    // case "title":
+    //     $DB=$Title;
+    // break;
+
+    // 完成網站標題編輯功能
     case "ad":
         $DB=$Ad;
     break;
@@ -234,6 +236,9 @@ switch($tt){
     case "menu":
         $DB=$Menu;
     break;
+    default:
+    $DB=$Title;
+break;
 }
 /* $total=$Total->find(1);
 
