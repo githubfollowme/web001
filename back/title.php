@@ -10,6 +10,35 @@
                     <td width="7%">刪除</td>
                     <td></td>
                 </tr>
+                <!-- 完成在後台顯示網站標題區圖片列表 -->
+                <?php
+                $rows=$DB->all();
+                foreach($rows as $row){
+                ?>
+                <tr>
+                    <td width="45%">
+                        <img src="./img/<?=$row['img'];?>" style="width:300px;height:30px">
+                    </td>
+                    <td width="23%">
+                        <input type="text" name="text" value="<?=$row['text'];?>">
+                    </td>
+                    <td width="7%">
+                        <input type="radio" name="sh" value="<?=$row['id'];?>">
+                    </td>
+                    <td width="7%">
+                        <input type="checkbox" name="del[]" id="<?=$row['id'];?>">
+
+                    </td>
+                    <td>
+                    <input type="button"
+                            onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/update_title.php&#39;)" 
+                              value="更新圖片">
+                    </td>
+                </tr>
+                <!-- 這裡擺個大掛號用意是..? -->
+                <?php
+                }
+                ?>
             </tbody>
         </table>
         <table style="margin-top:40px; width:70%;">
@@ -27,3 +56,6 @@
                 </tr>
             </tbody>
         </table>
+
+    </form>
+</div>
