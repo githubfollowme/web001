@@ -17,7 +17,6 @@ foreach($_POST['id']  as $key=>$id){
     }
     
     to("../back.php?do=".$Title->table);
-}
 
 // dd($_POST);
 

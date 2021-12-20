@@ -33,8 +33,9 @@
                     </td>
                     <td>
                     <input type="hidden" name="id[]" value="<?=$row['id'];?>">
+                    <!-- 更新了 modal/update_title 變成 modal/upload_title.php -->
                     <input type="button"
-                            onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/update_title.php?id=<?=$row['id'];?>&#39;)" 
+                    onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/upload_title.php?id=<?=$row['id'];?>&#39;)"
                               value="更新圖片">
                     </td>
                 </tr>
@@ -62,3 +63,5 @@
 
     </form>
 </div>
+
+boiao
