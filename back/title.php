@@ -10,7 +10,6 @@
                     <td width="7%">刪除</td>
                     <td></td>
                 </tr>
-                <!-- 完成在後台顯示網站標題區圖片列表 -->
                 <?php
                 $rows=$DB->all();
                 foreach($rows as $row){
@@ -24,21 +23,19 @@
                         <input type="text" name="text[]" value="<?=$row['text'];?>">
                     </td>
                     <td width="7%">
-                    <input type="radio" name="sh" value="<?=$row['id'];?>" <?=$checked;?>>
+                        <input type="radio" name="sh" value="<?=$row['id'];?>" <?=$checked;?>>
                     </td>
                     <td width="7%">
-                    <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
+                        <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
 
                     </td>
                     <td>
                     <input type="hidden" name="id[]" value="<?=$row['id'];?>">
-                    <!-- 更新了 modal/update_title 變成 modal/upload_title.php -->
                     <input type="button"
-                    onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/upload_title.php?id=<?=$row['id'];?>&#39;)"
+                            onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/upload_title.php?id=<?=$row['id'];?>&#39;)" 
                               value="更新圖片">
                     </td>
                 </tr>
-                <!-- 這裡擺個大掛號用意是..? -->
                 <?php
                 }
                 ?>
@@ -49,10 +46,11 @@
                 <tr>
                     <td width="200px">
                         <input type="button"
-                            onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/title.php&#39;)" 
+                            onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/<?=$DB->table;?>.php?table=<?=$DB->table;?>&#39;)" 
                               value="<?=$DB->button;?>">
                     </td>
                     <td class="cent">
+                        
                         <input type="submit" value="修改確定">
                         <input type="reset" value="重置">
                     </td>
@@ -62,5 +60,3 @@
 
     </form>
 </div>
-
-boiao
