@@ -9,8 +9,16 @@
                     <td width="10%">刪除</td>
                     <td></td>
                 </tr>
+
+                // $rows=$DB->all();
                 <?php
-                $rows=$DB->all();
+                $all=$DB->math('count','*');
+                $div=3;
+                $pages=ceil($all/$div);
+                $now=$_GET['p']??1;
+                $start=($now-1)*$div;
+
+                $rows=$DB->all(" limit $start,$div");
                 foreach($rows as $row){
                     $checked=($row['sh']==1)?'checked':'';
                 ?>
@@ -38,6 +46,16 @@
                 ?>
             </tbody>
         </table>
+        <div class="cent">
+<?php
+            for($i=1;$i<=$pages;$i++){
+
+             echo "<a href='?do={$DB->table}&p=$i'> $i </a>";
+}
+
+?>
+
+        </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
