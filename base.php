@@ -7,6 +7,7 @@ class DB{
     protected $user="root";
     protected $pw='';
     protected $pdo;
+    // 宣告公開變數
     public $table;
     public $title;
     public $button;
@@ -14,6 +15,7 @@ class DB{
     public $append;
     public $upload;
     public function __construct($table){
+     
         $this->table=$table;
         $this->pdo=new PDO($this->dsn,$this->user,$this->pw);
         $this->setStr($table);
