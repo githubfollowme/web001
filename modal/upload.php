@@ -1,10 +1,18 @@
-<h3>更新增標題圖片</h3>
+
+<!-- 這裡重新命名 fm upload_title ->upload.php -->
+<?php
+include_once "../base.php";
+?>
+
+<h3>更新<?=$DB->upload;?></h3>
 <hr>
    <!-- from api/update_title.php to api/upload_title.php -->
-<form action="api/upload_title.php" method="post" enctype="multipart/form-data">
+   <form action="api/upload.php?do=<?=$DB->table;?>" method="post" enctype="multipart/form-data">
+<!-- <form action="api/upload_title.php" method="post" enctype="multipart/form-data"> -->
     <table>
         <tr>
-            <td>標題區圖片：</td>
+        <td><?=$DB->upload;?>：</td>
+            <!-- <td>標題區圖片：</td> -->
             <td><input type="file" name="img" ></td>
         </tr>
         <!-- for--完成在後台顯示網站標題區圖片列表 -->

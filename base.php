@@ -12,7 +12,7 @@ class DB{
     public $button;
     public $header;
     public $append;
-
+    public $upload;
     public function __construct($table){
         $this->table=$table;
         $this->pdo=new PDO($this->dsn,$this->user,$this->pw);
@@ -26,6 +26,7 @@ class DB{
                 $this->button="新增網站標題圖片";
                 $this->header="網站標題";
                 $this->append="替代文字";
+                $this->upload="網站標題圖片";
                 break;
             case "ad";
             $this->title="動態文字廣告管理";
@@ -36,11 +37,13 @@ class DB{
             $this->title="動畫圖片管理";
             $this->button="新增動畫圖片";
             $this->header="動畫圖片";
+            $this->upload="動畫圖片";
             break;
             case "image";
             $this->title="校園映像資料管理";
             $this->button="新增校園映像圖片";
             $this->header="校園映像資料圖片";
+            $this->upload="校園映像圖片";
             break;
             case "total";
             $this->title="進站總人數管理";
