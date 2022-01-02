@@ -3,7 +3,7 @@ date_default_timezone_set("Asia/Taipei");
 session_start();
 
 class DB{
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=web01";
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=web001";
     protected $user="root";
     protected $pw='';
     protected $pdo;
@@ -101,7 +101,7 @@ class DB{
                     $tmp[]="`$key`='$value'";
                 }
 
-                $sql .=" WHERE ".implode(" AND ".$arg[0])." ".$arg[1];
+                $sql .=" WHERE ".implode(" AND ",$arg[0])." ".$arg[1];
 
             break;
             case 1:
@@ -109,7 +109,7 @@ class DB{
                     foreach($arg[0] as $key => $value){
                         $tmp[]="`$key`='$value'";
                     }
-                    $sql .= " WHERE ".implode(" AND ".$arg[0]);
+                    $sql .= " WHERE ".implode(" AND ",$arg[0]);
                 }else{
                     // $sql .= $arg[1];
                     $sql .= $arg[0];
