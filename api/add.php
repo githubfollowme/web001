@@ -6,7 +6,9 @@ if(!empty($_FILES['img']['tmp_name'])){
     move_uploaded_file($_FILES['img']['tmp_name'],"../img/".$_FILES['img']['name']);
     $data['img']=$_FILES['img']['name'];
 }else{
+    // $DB 要確認 如果不是 admin 也同時 不為menu的資料表的話
     if($DB->table!='admin' && $DB->table!='menu'){
+        // img欄位爲空
         $data['img']='';
     }
 }

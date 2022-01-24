@@ -1,9 +1,11 @@
 <?php
 date_default_timezone_set("Asia/Taipei");
 session_start();
-
+// 物件導向 像車子 零件就是變數 功能就是方法
+// class是php一種固定導向的名稱 想要建立物件導向的時候
 class DB{
-    protected $dsn="mysql:host=localhost;charset=utf8;dbname=web001";
+    protected $dsn="mysql:host=localhost;
+    charset=utf8;dbname=web001";
     protected $user="root";
     protected $pw='';
     protected $pdo;
@@ -14,6 +16,8 @@ class DB{
     public $header;
     public $append;
     public $upload;
+
+    // 去建構
     public function __construct($table){
      
         $this->table=$table;
@@ -35,6 +39,7 @@ class DB{
             $this->button="新增動態文字廣告";
             $this->header="動態文字廣告";
             break;
+            
             case "mvim";
             $this->title="動畫圖片管理";
             $this->button="新增動畫圖片";
@@ -76,20 +81,23 @@ class DB{
             break;
         }
     }
-
+// 比方 $Total->find('$id') 就是 $Total用find方法 去total資料表把$id撈出來
     public function find($id){
         $sql="SELECT * FROM $this->table WHERE ";
 
         if(is_array($id)){
+            // $key都是字串 然後js的index 都是 數字
             foreach($id as $key => $value){
                 $tmp[]="`$key`='$value'";
             }
-
+// implode Join array elements with a string 是陣列拆成字串 explode是字串組成陣列
+// sql .就是字串纍加 數字纍加則是加號
             $sql .= implode(" AND ",$tmp);
         }else{
             $sql .= " `id`='$id'";
         }
 
+        // pdo 為pdo資料庫裏的一個方法 主要crud就靠這個->再用pdo裏的query方法把sql結果 最終用fetch帶出來
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
     public function all(...$arg){
@@ -139,9 +147,7 @@ class DB{
                         $tmp[]="`$key`='$value'";
                     }
                     $sql .= " WHERE ".implode(" AND ",$tmp);
-                    // $sql .= " WHERE ".implode(" AND ".$arg[0]);
                 }else{
-                    // $sql .= $arg[1];
                     $sql .= $arg[0];
                     
                 }
@@ -166,7 +172,8 @@ class DB{
             $sql="INSERT INTO $this->table (`".implode("`,`",array_keys($array))."`) 
                                      VALUES('".implode("','",$array)."')";
         }
-        //echo $sql;
+
+       // echo $sql;
         return $this->pdo->exec($sql);
     }
 
@@ -197,11 +204,11 @@ function dd($array){
     print_r($array);
     echo "</pre>";
 }
-// 完成網站標題編輯功能
+
 function to($url){
     header("location:".$url);
 }
-
+// 直接引用total資料表 到 $Total ,new DB是固定用法 就是要引用這個DB類別的時候 賦予到新變數
 $Total=new DB('total');
 $Bottom=new DB('bottom');
 $Title=new DB('title');
@@ -212,16 +219,12 @@ $News=new DB('news');
 $Admin=new DB('admin');
 $Menu=new DB('menu');
 
+
 //$tt=(isset($_GET['do']))?$_GET['do']:'';
 //$tt=isset($_GET['do'])??'';
 $tt=$_GET['do']??'';
 
 switch($tt){
-    // case "title":
-    //     $DB=$Title;
-    // break;
-
-    // 完成網站標題編輯功能
     case "ad":
         $DB=$Ad;
     break;
@@ -247,8 +250,8 @@ switch($tt){
         $DB=$Menu;
     break;
     default:
-    $DB=$Title;
-break;
+        $DB=$Title;
+    break;
 }
 /* $total=$Total->find(1);
 
