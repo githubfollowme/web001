@@ -33,6 +33,11 @@ include_once "base.php";
                 <div id="menuput" class="dbor">
                     <!--主選單放此-->
                     <span class="t botli">主選單區</span>
+                     <div>
+                         <?php
+                         $Total->test(260);
+                         ?>
+                     </div>
                     <?php
                         $mains=$Menu->all(['parent'=>0,'sh'=>1]);
                         foreach($mains as $main){
@@ -63,7 +68,7 @@ include_once "base.php";
                 </div>
             </div>
             <?php
-				
+
 				$do=isset($_GET["do"])?$_GET["do"]:'main';
 				$file="./front/".$do.".php";
 				if(file_exists($file)){
@@ -71,7 +76,7 @@ include_once "base.php";
 				}else{
 					//echo "檔案不存在";
 					include "./front/main.php";
-				}	
+				}
 				?>
 
             <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
@@ -81,14 +86,14 @@ include_once "base.php";
                 <div style="width:89%; height:480px;" class="dbor">
                     <span class="t botli">校園映象區</span>
                         <div class="t" onclick="pp(1)"><img src="icon/up.jpg"></div>
-                        <?php 
+                        <?php
                             $imgs=$Image->all(['sh'=>1]);
                             foreach($imgs as $key => $img){
                         ?>
                         <div class="im cent" id="ssaa<?=$key;?>">
                             <img src="img/<?=$img['img'];?>" style="width:150px;height:103px;border:3px solid orange;margin:1px">
                         </div>
-                        <?php 
+                        <?php
                             }
                         ?>
                         <div class="t" class="t" onclick="pp(2)"><img src="icon/dn.jpg"></div>

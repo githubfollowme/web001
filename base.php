@@ -17,13 +17,31 @@ class DB{
     public $append;
     public $upload;
 
+
     // 去建構
     public function __construct($table){
-     
+
         $this->table=$table;
         $this->pdo=new PDO($this->dsn,$this->user,$this->pw);
         $this->setStr($table);
     }
+    public function test($id){
+        $sql="SELECT * FROM $this->table WHERE ";
+
+        if(is_array($id)){
+            // $key都是字串 然後js的index 都是 數字
+            foreach($id as $key => $value){
+                $tmp[]="`$key`='$value'";
+            }
+// implode Join array elements with a string 是陣列拆成字串 explode是字串組成陣列
+// sql .就是字串纍加 數字纍加則是加號
+            $sql .= implode(" AND ",$tmp);
+        }else{
+            $sql .= " `id`='$id'";
+        }
+echo $sql;
+    }
+
 
     private function setStr($table){
         switch($table){
@@ -39,7 +57,7 @@ class DB{
             $this->button="新增動態文字廣告";
             $this->header="動態文字廣告";
             break;
-            
+
             case "mvim";
             $this->title="動畫圖片管理";
             $this->button="新增動畫圖片";
@@ -121,7 +139,7 @@ class DB{
                 }else{
                     // $sql .= $arg[1];
                     $sql .= $arg[0];
-                    
+
                 }
             break;
         }
@@ -149,7 +167,7 @@ class DB{
                     $sql .= " WHERE ".implode(" AND ",$tmp);
                 }else{
                     $sql .= $arg[0];
-                    
+
                 }
             break;
         }
@@ -163,13 +181,13 @@ class DB{
             foreach($array as $key => $value){
                 $tmp[]="`$key`='$value'";
             }
-            $sql="UPDATE $this->table 
+            $sql="UPDATE $this->table
                      SET ".implode(",",$tmp)."
                    WHERE `id`='{$array['id']}'";
         }else{
             //insert
 
-            $sql="INSERT INTO $this->table (`".implode("`,`",array_keys($array))."`) 
+            $sql="INSERT INTO $this->table (`".implode("`,`",array_keys($array))."`)
                                      VALUES('".implode("','",$array)."')";
         }
 
