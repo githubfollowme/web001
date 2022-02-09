@@ -1,12 +1,12 @@
+<!-- 完成動態文字廣告顯示 -->
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli"><?=$DB->title;?></p>
-    <!-- <form method="post"  action="api/edit_ad.php"> -->
-    <form method="post" action="api/edit_ad.php?do=<?=$DB->table;?>">
+    <form method="post"  action="api/edit.php?do=<?=$DB->table;?>">
         <table width="100%">
             <tbody>
                 <tr class="yel">
-                <td width="80%"><?=$DB->header;?></td>
-                    <!-- <td width="80%">替代文字</td> -->
+
+                    <td width="80%"><?=$DB->header;?></td>
                     <td width="10%">顯示</td>
                     <td width="10%">刪除</td>
 
@@ -19,7 +19,7 @@
                 <tr>
 
                     <td>
-                    <input type="text" name="text[]" value="<?=$row['text'];?>" style="width:95%">
+                        <input type="text" name="text[]" value="<?=$row['text'];?>" style="width:95%">
                     </td>
                     <td>
                         <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" <?=$checked;?>>

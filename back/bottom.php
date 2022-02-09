@@ -1,3 +1,4 @@
+<!-- 完成頁尾版權資料管理功能 -->
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli">頁尾版權資料管理</p>
     <form method="post"  action="./api/bottom.php">

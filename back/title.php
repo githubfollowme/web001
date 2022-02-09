@@ -1,3 +1,4 @@
+<!-- 完成上傳更新圖片功能 -->
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli"><?=$DB->title;?></p>
     <form method="post"  action="api/edit.php?do=<?=$DB->table;?>">
