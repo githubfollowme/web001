@@ -1,3 +1,4 @@
+<!--  簡化新增的api為addd.php,並套用新增功能到其他的功能去 -->
 <?php
 
 include  "../base.php";

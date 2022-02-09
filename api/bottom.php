@@ -1,3 +1,4 @@
+<!-- 完成頁尾版權資料管理功能 -->
 <?php include_once "../base.php";
 
 /* 

@@ -1,3 +1,4 @@
+<!-- 完成編輯資料的共用api程式 -->
 <?php
 include_once "../base.php";
 foreach($_POST['id'] as $key => $id){

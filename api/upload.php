@@ -1,3 +1,4 @@
+<!-- 完成上傳更新圖片 -->
 <?php
 include_once "../base.php";
 

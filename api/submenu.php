@@ -1,23 +1,32 @@
-<?php
-echo "123";
+<!-- 完成編輯次選單功能 -->
+<?php  include_once "../base.php";
 
-
-// 用dd 看剛才的資料是否有送過來
-dd($_POST);
-dd($_GET);
-
-// 你的parent就是 $_GET['main']裡面的值
-foreach($_POST['name'] as $key=>$name){
-    if($name!=''){
-        $Menu->save(['name'=>$name,
-                        'href'=>$_POST['href'][$key],
-                        'sh'=>1,
-                        'parent'=>$_GET
-
-        ])
+if(isset($_POST['id'])){
+    foreach($_POST['id'] as $key=>$id){
+        if(isset($_POST['del']) && in_array($id,$_POST['del'])){
+            $Menu->del($id);
+        }else{
+            $sub=$Menu->find($id);
+            $sub['name']=$_POST['name'][$key];
+            $sub['href']=$_POST['href'][$key];
+            $Menu->save($sub);
+        }
     }
 }
 
-to("")
+if(isset($_POST['name2'])){
+    foreach($_POST['name2'] as $key=>$name){
+        if($name!=''){
+            $Menu->save(['name'=>$name,
+                         'href'=>$_POST['href2'][$key],
+                         'sh'=>1,
+                         'parent'=>$_GET['main']]);
+        }
+    }
+}
+
+to("../back.php?do=".$Menu->table);
+
+
 
 ?>
