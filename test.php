@@ -1,20 +1,6 @@
-<!-- <php
-public function all(...$arg){
-    $sql="SELECT * FROM $this->table";
-$sql="SELECT * FROM $this->table";
-$sql="SELECT * FROM $this->table";
-$sql="SELECT * FROM $this->table";
+public function __construct($table){
 
-switch(count($arg)){
-case2:
-foreach
-
+$this->table=$table;
+$this->pdo=new PDO($this->dsn,$this->user,$this->pw);
+$this->setStr($table);
 }
-$sql .=
-break;
-case1:
-
-}
-
-
-> -->
