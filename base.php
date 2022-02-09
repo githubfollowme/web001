@@ -102,7 +102,6 @@ echo $sql;
 // 比方 $Total->find('$id') 就是 $Total用find方法 去total資料表把$id撈出來
     public function find($id){
         $sql="SELECT * FROM $this->table WHERE ";
-
         if(is_array($id)){
             // $key都是字串 然後js的index 都是 數字
             foreach($id as $key => $value){
@@ -213,7 +212,6 @@ echo $sql;
     public function q($sql){
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
-
 
 }
 
