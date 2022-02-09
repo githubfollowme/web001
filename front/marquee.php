@@ -1,3 +1,4 @@
+<!-- 完成動態文字廣告顯示 -->
 <marquee scrolldelay="120" direction="left" style="position:absolute; width:100%; height:40px;">
 <?php
 $ads=$Ad->all(['sh'=>1]);
