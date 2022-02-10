@@ -1,45 +1,22 @@
-<!-- php
-date_default_timezone_set("Asia/Taipei");
-session_start();
+<?php
+include_once "./base.php";
+// find
+// $find=$Menu->find(1);
+// echo "<pre>";
+// print_r($find);
+// echo "</pre>";
+// all
+$all=$Menu->all();
+echo "<pre>";
+print_r($all);
+echo "</pre>";
+// 新增
+// $User->save(['name'=>'456']);
+// 修改
+// $save=$User->save(['id'=>'2','name'=>'qwe123']);
+// 刪除
+// $User->del(9);
+// 計算
+// $User->math('count','*',$all);
 
-class DB{
-protected $dsn="mysql:host=localhost;charset=utf8;dbname=web01";
-protected $user="root";
-protected $pw='pw';
-protected $table='table';
-protected $pdo;
-
-public $table;
-public $title;
-public $button;
-public $header;
-public $append;
-public $upload;
-
-
-public function __construct($table){
-$this->table=$table;
-$this->pdo=new PDO($this->dsn,$this->root,$this->pw);
-$this->setStr($table);
-
-
-}
-
-public function find($id){
-    $sql="SELECT*FROM $this->table WHERE";
-    if(is_array($id)){
-        foreach($id as $key=>$value){
-            $tmp[]="`$key`='$value'";
-        }
-        $sql .=implode(" AND ",$tmp);
-    }else{
-        $sql .="`id`='$id'";
-
-    }
-    return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
-
-
-
-
-
-} -->
+?>

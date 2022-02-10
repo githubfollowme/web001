@@ -142,7 +142,7 @@ echo $sql;
                 }
             break;
         }
-
+        echo $sql;
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
     public function math($method,$col,...$arg){
@@ -174,6 +174,7 @@ echo $sql;
 
         return $this->pdo->query($sql)->fetchColumn();
     }
+    // 陣tao ti zi set where 指
     public function save($array){
         if(isset($array['id'])){
             //update

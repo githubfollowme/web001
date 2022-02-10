@@ -37,6 +37,11 @@ include_once "base.php";
                          <?php
                          $Total->test(260);
                          ?>
+                         </div>
+                         <div>
+                         <?php
+                         include_once "./test.php";
+                         ?>
                      </div>
                     <?php
                         $mains=$Menu->all(['parent'=>0,'sh'=>1]);

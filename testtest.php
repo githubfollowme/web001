@@ -1,4 +1,4 @@
-<?php
+<!-- php
 date_default_timezone_set("Asia/Taipei");
 session_start();
 // 物件導向 像車子 零件就是變數 功能就是方法
@@ -19,7 +19,7 @@ class DB{
 
     // 去建構
     public function __construct($table){
-     
+
         $this->table=$table;
         $this->pdo=new PDO($this->dsn,$this->user,$this->pw);
         $this->setStr($table);
@@ -39,7 +39,7 @@ class DB{
             $this->button="新增動態文字廣告";
             $this->header="動態文字廣告";
             break;
-            
+
             case "mvim";
             $this->title="動畫圖片管理";
             $this->button="新增動畫圖片";
@@ -121,7 +121,7 @@ class DB{
                 }else{
                     // $sql .= $arg[1];
                     $sql .= $arg[0];
-                    
+
                 }
             break;
         }
@@ -149,7 +149,7 @@ class DB{
                     $sql .= " WHERE ".implode(" AND ",$tmp);
                 }else{
                     $sql .= $arg[0];
-                    
+
                 }
             break;
         }
@@ -163,13 +163,13 @@ class DB{
             foreach($array as $key => $value){
                 $tmp[]="`$key`='$value'";
             }
-            $sql="UPDATE $this->table 
+            $sql="UPDATE $this->table
                      SET ".implode(",",$tmp)."
                    WHERE `id`='{$array['id']}'";
         }else{
             //insert
 
-            $sql="INSERT INTO $this->table (`".implode("`,`",array_keys($array))."`) 
+            $sql="INSERT INTO $this->table (`".implode("`,`",array_keys($array))."`)
                                      VALUES('".implode("','",$array)."')";
         }
 
@@ -198,12 +198,13 @@ class DB{
 
 
 }
-
+<?php
 function dd($array){
     echo "<pre>";
     print_r($array);
     echo "</pre>";
 }
+?>
 
 function to($url){
     header("location:".$url);
@@ -218,6 +219,7 @@ $Image=new DB('image');
 $News=new DB('news');
 $Admin=new DB('admin');
 $Menu=new DB('menu');
+
 
 
 //$tt=(isset($_GET['do']))?$_GET['do']:'';
@@ -267,5 +269,13 @@ if(!isset($_SESSION['total'])){
     $_SESSION['total']=$total['total'];
 }
 
+ -->
+<?php
+if(!isset($_SESSION['total'])){
+    $total=$Total->find(1);
+    $total['total']++;
+    $Total->save($total);
+    $_SESSION['total']=$total['total'];
 
+}
 ?>
