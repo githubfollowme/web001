@@ -1,13 +1,12 @@
-<!-- php
+<?php
 date_default_timezone_set("Asia/Taipei");
 session_start();
 // 物件導向 像車子 零件就是變數 功能就是方法
 // class是php一種固定導向的名稱 想要建立物件導向的時候
 class DB{
-    protected $dsn="mysql:host=localhost;
-    charset=utf8;dbname=web001";
+    protected $dsn="mysql:host=localhost;carset=utf8;dbname=web001";
     protected $user="root";
-    protected $pw='';
+    protected $pw="pw";
     protected $pdo;
     // 宣告公開變數
     public $table;
@@ -100,7 +99,7 @@ class DB{
         // pdo 為pdo資料庫裏的一個方法 主要crud就靠這個->再用pdo裏的query方法把sql結果 最終用fetch帶出來
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
-    public function all(...$arg){
+public function all(...$arg){
         $sql="SELECT * FROM $this->table ";
 
         switch(count($arg)){
@@ -198,13 +197,35 @@ class DB{
 
 
 }
-<?php
-function dd($array){
-    echo "<pre>";
-    print_r($array);
-    echo "</pre>";
-}
-?>
+
+// public function all(...$arg){
+// $sql="SELECT* FROM $this->table";
+
+// switch(count($arg)){
+//     case 2:
+// foreach($arg[0] as $key=>$value){
+//     $tmp[]="`$key`='$value'";}
+//     $sql .=" WHERE ".implode(" AND ",$arg[0])."".$arg[1];
+//     break;
+
+//     case 1:
+//         if(is_array($arg[0])){
+//             foreach($arg[0] as $key => $value){
+//                 $tmp[]="`$key`='$value'";
+//             }
+//             $sql .= " WHERE ".implode(" AND ",$arg[0]);
+//         }else{
+//             // $sql .= $arg[1];
+//             $sql .= $arg[0];
+
+//         }
+//     break;
+// }
+// echo $sql;
+// return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+// }
+
+
 
 function to($url){
     header("location:".$url);
@@ -219,7 +240,6 @@ $Image=new DB('image');
 $News=new DB('news');
 $Admin=new DB('admin');
 $Menu=new DB('menu');
-
 
 
 //$tt=(isset($_GET['do']))?$_GET['do']:'';
@@ -267,15 +287,5 @@ if(!isset($_SESSION['total'])){
     $total['total']++;
     $Total->save($total);
     $_SESSION['total']=$total['total'];
-}
-
- -->
-<?php
-if(!isset($_SESSION['total'])){
-    $total=$Total->find(1);
-    $total['total']++;
-    $Total->save($total);
-    $_SESSION['total']=$total['total'];
-
 }
 ?>

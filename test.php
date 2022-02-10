@@ -1,5 +1,5 @@
 <?php
-include_once "./base.php";
+include_once "./testtest.php";
 // find
 // $find=$Menu->find(1);
 // echo "<pre>";
@@ -18,5 +18,7 @@ echo "</pre>";
 // $User->del(9);
 // 計算
 // $User->math('count','*',$all);
-
+// $math=$User->math("count","*");
+// echo "<br>";
+// echo $math;
 ?>

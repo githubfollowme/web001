@@ -117,6 +117,7 @@ echo $sql;
         // pdo 為pdo資料庫裏的一個方法 主要crud就靠這個->再用pdo裏的query方法把sql結果 最終用fetch帶出來
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
+    // zhi huan tao ti zhi
     public function all(...$arg){
         $sql="SELECT * FROM $this->table ";
 
@@ -129,6 +130,7 @@ echo $sql;
                 $sql .=" WHERE ".implode(" AND ",$arg[0])." ".$arg[1];
 
             break;
+        // zhi zhen tao ti zhi zhi
             case 1:
                 if(is_array($arg[0])){
                     foreach($arg[0] as $key => $value){
